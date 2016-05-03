@@ -1,0 +1,41 @@
+body {
+  background-color: #c7c2c0;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.search-post form {
+}
+
+aside {
+  background-color: #212121;
+  color: white;
+  position: fixed;
+  right: 0;
+  border-radius: 0px 0px 0px 4px;
+  top: 32px;
+  min-width: 200px;
+  width: 20%;
+  z-index: 10;
+
+}
+
+aside h6 {
+  text-align: center;
+}
+
+@media (max-width: 440px){
+  aside {
+    width: 100%;
+    margin: 0;
+    top: 70px;
+    border-radius: 0px 0px 4px 4px;
+  }
+  .search-post form {
+    width: 70%;
+  }
+}
