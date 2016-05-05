@@ -1,6 +1,17 @@
 body {
-  background-color: #c7c2c0;
+  background: url('http://images.summitpost.org/original/869428.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
+
+.btn:focus,.btn:active {
+   outline: none !important;
+}
+
+input:focus,input:active {
+   outline: none !important;
+}
+
 
 .container-fluid {
   margin: 0;
@@ -8,34 +19,35 @@ body {
   width: 100%;
 }
 
-.search-post form {
-}
 
 aside {
-  background-color: #212121;
+  background-color: #313131;
   color: white;
-  position: fixed;
+  position: absolute;
   right: 0;
-  border-radius: 0px 0px 0px 4px;
+  border-radius: 0px 0px 0px 8px;
   top: 32px;
-  min-width: 200px;
-  width: 20%;
+  min-width: 140px;
   z-index: 10;
 
 }
 
-aside h6 {
+aside h5 {
   text-align: center;
 }
 
-@media (max-width: 440px){
+
+@media (max-width: 500px){
   aside {
     width: 100%;
     margin: 0;
-    top: 70px;
-    border-radius: 0px 0px 4px 4px;
+    top: 64px;
+    border-radius: 0px 0px 8px 8px;
+    background-color: #414141;
   }
-  .search-post form {
-    width: 70%;
+  .controller-post {
+    width: 100%;
   }
+
+
 }

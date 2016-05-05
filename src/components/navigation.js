@@ -14,55 +14,53 @@ export default class NavBar extends Component {
   }
 
   toggleController(e){
-      this.setState({toggled: !this.state.toggled});
-      console.log(this.state.toggled)
-    }
-
+    this.setState({toggled: !this.state.toggled});
+  }
 
   render() {
-    var conditionalComponent;
+    var controller;
     var search;
 
     if(this.state.toggled){
-      conditionalComponent = <Controller />
+      controller = <Controller />
       search = <Search />
     }else{
-      conditionalComponent = null;
+      controller = null;
       search = null;
     }
 
     return (
-      <header>
+      <header style={{margin: '0', padding: '0', position: 'fixed', zIndex: '14'}}>
         <nav>
         <div className="btn-group btn-group-justified" role="group" aria-label="..."  >
 
           <div className="btn-group" role="group" >
-            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#212121', border:'0'}}>
-            <span className="glyphicon glyphicon-stop" aria-hidden="true" style={{color: '#fff'}}></span>
+            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
+            <span className="glyphicon glyphicon-stop" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
             </button>
           </div>
 
           <div className="btn-group" role="group">
-            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#212121', border:'0'}}>
-            <span className="glyphicon glyphicon-tree-deciduous" aria-hidden="true" style={{color: '#fff'}}></span>
+            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
+            <span className="glyphicon glyphicon-tree-deciduous" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
             </button>
           </div>
 
           <div className="btn-group" role="group">
-            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#212121', border:'0'}}>
-            <span className=" glyphicon glyphicon-road" aria-hidden="true" style={{color: '#fff'}}></span>
+            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
+            <span className=" glyphicon glyphicon-road" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
             </button>
           </div>
 
           <div className="btn-group" role="group">
-            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#212121', border:'0'}}>
-            <span className= "glyphicon glyphicon-tent" aria-hidden="true" style={{color: '#fff'}}></span>
+            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
+            <span className= "glyphicon glyphicon-tent" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
             </button>
           </div>
 
           <div className="btn-group" role="group">
-            <button type="button" onClick={this.toggleController} className="btn btn-default btn-large white" style={{borderRadius:'0px',backgroundColor:'#212121', border:'0'}}>
-              <span className="caret" style={{color: '#fff'}}></span>
+            <button type="button" onClick={this.toggleController} className="btn btn-default btn-large white" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
+              <span className="caret" style={{color: '#FAFAFA'}}></span>
             </button>
           </div>
 
@@ -70,7 +68,7 @@ export default class NavBar extends Component {
 
         </nav>
           {search}
-          {conditionalComponent}
+          {controller}
       </header>
     )
   }

@@ -2,49 +2,36 @@ var React = require('react');
 
 module.exports = React.createClass({
     getInitialState: function(){
-      return {likeClicked:'false', CommentClick:'false', LikeClicked:'false', LikeClicked:'false'};
+      return {grabbed: false};
     },
-    handleLikeClick: function(event){
-      this.setState({likeClicked: !this.state.likeClicked});
+
+    handleGrab(){
+      console.log(this)
+      this.setState({grabbed: true})
+      console.log(this.props.title)
     },
 
     render: function(){
 
       return (
-        <div className="btn-group btn-group-justified" role="group" aria-label="...">
 
-          <div className="btn-group" role="group" >
-            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',border:'none'}}
-              onClick={this.handleLikeClick}>
-              <span className="glyphicon glyphicon-user" style={{paddingRight:'.5em'}}></span>
-              {this.props.author}
-            </button>
+        <nav>
+
+          <div style={{width:'50%', float: 'left', display: 'inline-block', paddingLeft:'2%', height: '40px'}}>
+            {this.props.author} of {this.props.clan}
           </div>
 
-          <div className="btn-group" role="group">
-            <button type="button" className="btn btn-default btn-large"
-             style={{borderRadius:'0px',border:'none'}}
-             onClick={this.handleTreeClick}>
-            <span className="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
-            </button>
+          <div style={{display: 'inline-block', width: '25%', height: '40px'}}>
+            <hr/>
           </div>
 
-          <div className="btn-group" role="group">
-            <button type="button" className="btn btn-default btn-large"
-             style={{borderRadius:'0px',border:'none'}}
-             onClick={this.handleTreeClick}>
-            <span className="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
-            </button>
-          </div>
+          <button
+            onClick={this.handleGrab}
+            style={{display: 'inline-block', width: '25%', height: '50px', float: 'right', backgroundColor: 'white', border: 'none'}}>
+            <span className="glyphicon glyphicon-share"></span>
+          </button>
 
-          <div className="btn-group" role="group">
-            <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',border:'none'}}
-            onClick={this.handleShareClick}>
-            <span className="glyphicon glyphicon-share" aria-hidden="true"></span>
-            </button>
-          </div>
-
-        </div>
+        </nav>
       )
 	}
 });
