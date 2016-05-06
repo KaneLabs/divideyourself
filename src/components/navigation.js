@@ -2,7 +2,10 @@ import React from 'react';
 import { Component } from 'react';
 import Controller from './controller';
 import Search from './search-header';
+import { Link } from 'react-router';
 
+var Rebase = require ('re-base');
+var base = Rebase.createClass('http://divideyourself.firebaseio.com/');
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -18,11 +21,15 @@ export default class NavBar extends Component {
   }
 
   render() {
+
+
+    var loginStatus = false;
+
     var controller;
     var search;
 
     if(this.state.toggled){
-      controller = <Controller />
+      controller = <Controller loginStatus={loginStatus}/>
       search = <Search />
     }else{
       controller = null;
@@ -36,25 +43,25 @@ export default class NavBar extends Component {
 
           <div className="btn-group" role="group" >
             <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
-            <span className="glyphicon glyphicon-stop" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
+              <Link to="/" className="glyphicon glyphicon-stop" aria-hidden="true" style={{color: '#FAFAFA'}}></Link>
             </button>
           </div>
 
           <div className="btn-group" role="group">
             <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
-            <span className="glyphicon glyphicon-tree-deciduous" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
+            <Link to="/knowledge" className="glyphicon glyphicon-tree-deciduous" aria-hidden="true" style={{color: '#FAFAFA'}}></Link>
             </button>
           </div>
 
           <div className="btn-group" role="group">
             <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
-            <span className=" glyphicon glyphicon-road" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
+            <Link to="/adventure" className=" glyphicon glyphicon-road" aria-hidden="true" style={{color: '#FAFAFA'}}></Link>
             </button>
           </div>
 
           <div className="btn-group" role="group">
             <button type="button" className="btn btn-default btn-large" style={{borderRadius:'0px',backgroundColor:'#292929', border:'0'}}>
-            <span className= "glyphicon glyphicon-tent" aria-hidden="true" style={{color: '#FAFAFA'}}></span>
+            <Link to="/market" className= "glyphicon glyphicon-tent" aria-hidden="true" style={{color: '#FAFAFA'}}></Link>
             </button>
           </div>
 

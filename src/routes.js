@@ -1,8 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import MasonryGallery from './components/masonry-gallery';
+import Login from './components/login'
 
 import App from './components/app';
+
+
 
 const ComingSoon = () => {
   return (
@@ -26,5 +29,6 @@ export default (
     <Route path='knowledge' component={ComingSoon}/>
     <Route path='adventure' component={ComingSoon} />
     <Route path='market' component={ComingSoon} />
+    <Route path='login' component={Login} />
   </Route>
 );
