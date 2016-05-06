@@ -14,10 +14,10 @@ export default class Controller extends Component {
 render(){
 var username;
 if(!this.props.loginStatus){
-  username = "Login or SignUp"
+  username = <div><Link to="/login">Login</Link> or <Link to="/signup">SignUp</Link></div>
 }
   return <aside>
-            <h5><Link to="login">{username}</Link></h5>
+            <h5>{username}</h5>
             <ul>
               <li>Profile Name</li>
               <li>Profile Pic</li>

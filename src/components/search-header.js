@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 var Rebase = require('re-base');
 var base = Rebase.createClass('http://divideyourself.firebaseio.com/');
-
+var authData = base.getAuth();
 
 
 export default class Search extends Component {
@@ -113,7 +113,7 @@ export class PostForm extends Component {
 
 
 
-    if(!this.state.file && !this.state.urlError){
+    if(!this.state.file && this.state.urlError){
       this.setState({noImgError: true})
     }else{
       this.setState({noImgError: false})

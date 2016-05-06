@@ -13,17 +13,18 @@ export default class App extends Component{
   }
 
   render() {
-  
-    var isLoggedIn;
+    var name;
+    base.fetch(`users/${authData.uid}/firstname`, {
+      context: this,
+      asArray: false,
+      then(data){
+        name = data
+      }
+    });
 
-    if(authData){
-      isLoggedIn = true
-    }else{
-      isLoggedIn = false;
-    }
     return(
      <div>
-      <NavBar loginStatus={isLoggedIn}/>
+      <NavBar authData={authData}/>
       {this.props.children}
      </div>
    );

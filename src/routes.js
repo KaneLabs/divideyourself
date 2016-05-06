@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import MasonryGallery from './components/masonry-gallery';
+import SignUp from './components/signup'
 import Login from './components/login'
 
 import App from './components/app';
@@ -29,6 +30,7 @@ export default (
     <Route path='knowledge' component={ComingSoon}/>
     <Route path='adventure' component={ComingSoon} />
     <Route path='market' component={ComingSoon} />
+    <Route path='signup' component={SignUp} />
     <Route path='login' component={Login} />
   </Route>
 );
