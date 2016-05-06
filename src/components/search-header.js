@@ -136,6 +136,7 @@ export class PostForm extends Component {
       base.push('posts', {
         data: {src: imgSource, title: title }
       });
+      
     }
 
   }

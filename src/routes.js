@@ -3,10 +3,9 @@ import { Route, IndexRoute } from 'react-router';
 import MasonryGallery from './components/masonry-gallery';
 import SignUp from './components/signup'
 import Login from './components/login'
+import Profile from './components/profile'
 
 import App from './components/app';
-
-
 
 const ComingSoon = () => {
   return (
@@ -22,8 +21,6 @@ const ComingSoon = () => {
   )
 }
 
-
-
 export default (
   <Route path='/' component={App}>
   <IndexRoute component={MasonryGallery} />
@@ -32,5 +29,6 @@ export default (
     <Route path='market' component={ComingSoon} />
     <Route path='signup' component={SignUp} />
     <Route path='login' component={Login} />
+    <Route path='profile' component={Profile} />
   </Route>
 );

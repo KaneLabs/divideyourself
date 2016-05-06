@@ -4,8 +4,7 @@ import Controller from './controller';
 import Search from './search-header';
 import { Link } from 'react-router';
 
-var Rebase = require ('re-base');
-var base = Rebase.createClass('http://divideyourself.firebaseio.com/');
+
 
 export default class NavBar extends Component {
   constructor(props) {

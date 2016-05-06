@@ -19,8 +19,6 @@ export default class SignUp extends Component {
       firstname: '',
       lastname: ''
     }
-    // this.handleEmail = this.handleEmail.bind(this)
-    // this.handlePass = this.handlePass.bind(this)
   }
 
   handleSubmit = (e) => {

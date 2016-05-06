@@ -1,8 +1,8 @@
-var React = require('react');
-var Masonry = require('react-masonry-component');
+import React from 'react'
+import { Component } from 'react'
+import Masonry from 'react-masonry-component'
 var Rebase = require('re-base');
-var base = Rebase.createClass('http://divideyourself.firebaseio.com/');
-var GrabButton = require('./grab-button');
+var base = Rebase.createClass('https://myapp.firebaseio.com');
 
 var masonryOptions = {
     transitionDuration: 750
@@ -15,40 +15,64 @@ var style = {
     position:'relative',
 };
 
+export default class Profile extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      posts: [],
+      postsKeys: [],
+      savedKeys: [],
+      matchedKeys: []
+    }
+  }
 
-  module.exports = React.createClass({
-
-    getInitialState: function(){
-      return {
-        posts: [],
-        toggleClick: false,
-        loading: true,
-        savedPosts: []
+  componentDidMount(){
+      this.ref = base.listenTo('posts', {
+      context: this,
+      asArray: true,
+      then(data){
+        this.setState({posts: data})
       }
-    },
+    });
+  }
+  
+  componentWillUnmount(){
+    base.removeBinding(this.ref)
+  }
 
 
+  render(){
+    if(!this.state.posts[0]){
+      return <div>loading...</div>
+    }
+    var savedKeys = JSON.parse(localStorage.getItem('saved'));
+    var postsKeys = this.state.postsKeys
 
-    componentDidMount: function(){
-        this.ref = base.syncState('posts', {
-        context: this,
-        state: 'posts',
-        asArray: true,
-        then(data){
-          this.setState({loading: false});
+      for(var i = 0; i < this.state.posts.length; i++){
+        this.state.postsKeys[i] = this.state.posts[i].key
+      }
+      console.log(savedKeys)
+      console.log(postsKeys)
+      var matchedKeys = [];
+      for(var i = 0; i < savedKeys.length; i++ ){
+        for(var j = 0; j < postsKeys.length; j++){
+          if(savedKeys[i] === postsKeys[j]){
+            matchedKeys.push(savedKeys[i]);
+          }
         }
-      })
-    },
-    componentWillUnmount: function(){
-      base.removeBinding(this.ref)
-    },
-
-    render: function () {
-      if(this.state.loading){
-        return <div>loading... </div>
       }
+      var posts = this.state.posts
+      var matchingPosts = []
+      for(var i = 0; i < matchedKeys.length; i++){
+        for(var j = 0; j < posts.length; j++){
+          if(posts[j].key === matchedKeys[i]){
+            matchingPosts.push(posts[j]);
+          }
+        }
+      }
+      console.log(matchingPosts)
 
-      var childElements = this.state.posts.map(function(element){
+      var childElements = matchingPosts.map(function(element){
         var hasClan;
 
         if(element.author && element.clan){
@@ -69,7 +93,6 @@ var style = {
                       <hr/>
                     </div>
 
-                    <GrabButton id={element.key}/>
 
                   </div>
                 </div>
@@ -87,4 +110,5 @@ var style = {
               </Masonry>
           );
       }
-  });
+
+  }
